@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
+ function Icon(props) {
+    return <i>
+      {props.icon}
+    </i>
+ }
+
+ function Card(props) {
+   return <section>
+      <h3>
+        {props.icon} is an icon!
+      </h3>
+      <p>
+        {props.children}
+      </p>
+    </section>
+ }
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <Card icon={<Icon icon='B'/>}>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          A text
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </Card>
     </div>
   );
 }
