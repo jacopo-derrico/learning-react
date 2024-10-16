@@ -47,6 +47,13 @@ import './style.css'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
+  const [value, setValue] = useState('');
+
+  const eventHandler = (e) => {
+    setValue(e.target.value);
+    console.log(e.target.value)
+  }
+
   return (
     <div className="App">
       <Card icon={<Icon icon='B'/>}>
@@ -56,6 +63,7 @@ function App() {
       </Card>
       <LoadingButton loading={isLoading}  onClick={() => setIsLoading(!isLoading)} label='Load'/>
       <ListOfAnimals/>
+      <input type='text' value={value} onChange={eventHandler}/>
     </div>
   );
 }
