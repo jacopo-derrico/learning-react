@@ -1,69 +1,26 @@
 import React, { useState } from 'react'
 import './style.css'
 
- function Icon(props) {
-    return <i>
-      {props.icon}
-    </i>
- }
-
- function Card(props) {
-   return <section>
-      <h3>
-        {props.icon} is an icon!
-      </h3>
-      <p>
-        {props.children}
-      </p>
-    </section>
- }
-
- function LoadingButton(props) {
-  return (
-    <button onClick={props.onClick}>
-      {props.loading ? <span className="loader"/> : props.label}
-    </button>
-  )
- }
-
- const data = [
-  { id: 1, name: 'Fido 🐕' },
-  { id: 2, name: 'Snowball 🐈' },
-  { id: 3, name: 'Murph 🐈‍⬛' },
-  { id: 4, name: 'Zelda 🐈' },
- ]
-
- function ListOfAnimals() {
-  return (
-    <ul>
-      {data &&
-        data.map(({id, name}) => {
-          return <li key={id}>{name}</li>
-        })
-      }
-    </ul>
-  )
- }
-
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [value, setValue] = useState('');
 
-  const eventHandler = (e) => {
-    setValue(e.target.value);
-    console.log(e.target.value)
+  const [count, setCount] = useState(0);
+  const [prevCount, setPrevCount] = useState(0);
+
+  const handleClick = () => {
+    setCount((prev) => {
+      setPrevCount(prev);
+    })
+    setCount(count + 1);
   }
+
 
   return (
     <div className="App">
-      <Card icon={<Icon icon='B'/>}>
-        <p>
-          A text
-        </p>
-      </Card>
-      <LoadingButton loading={isLoading}  onClick={() => setIsLoading(!isLoading)} label='Load'/>
-      <ListOfAnimals/>
-      <input type='text' value={value} onChange={eventHandler}/>
+      <h4>{ count }</h4>
+      <h4>{ prevCount }</h4>
+      <button onClick={handleClick}>
+        ADD 1
+      </button>
     </div>
   );
 }
