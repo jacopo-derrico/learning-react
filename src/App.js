@@ -26,6 +26,25 @@ import './style.css'
   )
  }
 
+ const data = [
+  { id: 1, name: 'Fido 🐕' },
+  { id: 2, name: 'Snowball 🐈' },
+  { id: 3, name: 'Murph 🐈‍⬛' },
+  { id: 4, name: 'Zelda 🐈' },
+ ]
+
+ function ListOfAnimals() {
+  return (
+    <ul>
+      {data &&
+        data.map(({id, name}) => {
+          return <li key={id}>{name}</li>
+        })
+      }
+    </ul>
+  )
+ }
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   return (
@@ -36,6 +55,7 @@ function App() {
         </p>
       </Card>
       <LoadingButton loading={isLoading}  onClick={() => setIsLoading(!isLoading)} label='Load'/>
+      <ListOfAnimals/>
     </div>
   );
 }
