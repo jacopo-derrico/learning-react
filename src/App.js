@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './style.css'
 
  function Icon(props) {
     return <i>
@@ -18,7 +18,16 @@ import './App.css';
     </section>
  }
 
+ function LoadingButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      {props.loading ? <span className="loader"/> : props.label}
+    </button>
+  )
+ }
+
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="App">
       <Card icon={<Icon icon='B'/>}>
@@ -26,6 +35,7 @@ function App() {
           A text
         </p>
       </Card>
+      <LoadingButton loading={isLoading}  onClick={() => setIsLoading(!isLoading)} label='Load'/>
     </div>
   );
 }
